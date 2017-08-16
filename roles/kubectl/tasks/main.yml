@@ -1,0 +1,7 @@
+---
+# Fetch the kubectl binary from the system, use flat so there is only one file.
+- name: Fetch the kubectl binary file
+  fetch:
+    src: '{{ kubectl_remote_location }}'
+    dest: '{{ kubectl_local_location }}'
+    flat: true

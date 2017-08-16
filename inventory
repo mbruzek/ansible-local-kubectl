@@ -1,0 +1,4 @@
+localhost ansible_connection=local 
+
+[masters]
+ec2-54-202-6-151.us-west-2.compute.amazonaws.com

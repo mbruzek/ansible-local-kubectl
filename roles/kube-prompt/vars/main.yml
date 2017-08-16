@@ -1,0 +1,4 @@
+---
+# Use the environment variable if exists, otherwise $HOME/go.
+gopath: "{{ ansible_env['GOPATH'] | default( ansible_user_dir ~ '/go' ) }}"
+kube_prompt_path: "github.com/c-bata/kube-prompt"

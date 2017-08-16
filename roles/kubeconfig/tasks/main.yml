@@ -1,0 +1,19 @@
+---
+# Fetch the configuration to a directory separated by hostname.
+- name: Fetch the Kubernetes configuration file
+  fetch:
+    src: '{{ kubeconfig_remote_location }}'
+    dest: '{{ kubeconfig_local_location }}'
+
+# Create a symlink to the configuration file using the hostname.
+- name: Create a symbolic link to the Kubernetes configuration file
+  delegate_to: localhost
+  file:
+    src: '{{ kubeconfig_local_location }}/{{ inventory_hostname }}{{ kubeconfig_remote_location }}'
+    dest: '{{ kubeconfig_local_location }}/config'
+    state: link
+
+# The context name contains the hostname with all the dots replaced by dashes.
+- name: Print out the context name to use
+  debug:
+    msg: "The current-context may be using local address, use context *{{ inventory_hostname | regex_replace('\\.', '-') }}*"

@@ -1,0 +1,3 @@
+---
+kubectl_remote_location: '/usr/bin/kubectl'
+kubectl_local_location: '~/bin/kubectl'

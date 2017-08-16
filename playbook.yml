@@ -1,0 +1,11 @@
+---
+- name: Fetch the kubectl and kubeconfig from a cluster
+  hosts: masters
+  roles:
+    - kubeconfig
+    - kubectl
+
+- name: Install kube-prompt on all the systems
+  hosts: all
+  roles:
+    - kube-prompt
