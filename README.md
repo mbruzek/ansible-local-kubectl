@@ -9,7 +9,7 @@ Put the host FQDN or IP address of a master system in the inventory file and
 run the playbook:  
 
 ```sh
-echo ec2-54-208-6-151.us-west-2.compute.amazonaws.com >> inventory
+echo ec2-54-208-6-151.us-west-1.compute.amazonaws.com >> inventory
 ansible-playbook playbook.yml
 ```
 
@@ -27,6 +27,9 @@ The Kubernetes configuration file may be configured to use internal IP
 addresses and you should change the to use the external context.
 
 ```sh
-kubectl config get-contexts  # Lists the contexts defined in the configuration.
-kubectl config use-context default/ec2-54-208-6-151-us-west-2-compute-amazonaws-com:8443/system:admin
+# List the contexts defined in the Kubernetes configuration file:
+kubectl config get-contexts
+
+# Start using the external context:
+kubectl config use-context default/ec2-54-208-6-151-us-west-1-compute-amazonaws-com:8443/system:admin
 ```
